@@ -15,6 +15,7 @@ This repository contains a set of scripts for creating base boxes for usage with
   - Vivid 15.04 x86_64
   - Wily 15.10 x86_64
   - Xenial 16.04 x86_64
+  - Bionic 18.04 x86_64
 * Debian
   - Squeeze x86_64
   - Wheezy x86_64
