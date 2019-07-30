@@ -14,7 +14,6 @@ lxc.cap.drop = sys_module mac_admin mac_override sys_time
 
 # Prevent systemd-journald from burning 100% of CPU
 # See https://wiki.debian.org/LXC#Incompatibility_with_systemd
-lxc.kmsg = 0
 lxc.autodev = 1
 
 # When using LXC with apparmor, the container will be confined by default.

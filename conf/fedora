@@ -1,6 +1,5 @@
 # work better with systemd:
 lxc.autodev = 1
-lxc.kmsg = 0
 
 # Taken from the oracle.common.conf.in
 # Console settings
