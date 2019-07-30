@@ -53,7 +53,8 @@ fi
 if [ ${DISTRIBUTION} = 'fedora' ] ||\
    [ ${DISTRIBUTION} = 'ubuntu' -a ${RELEASE} = 'wily' ] ||\
    [ ${DISTRIBUTION} = 'debian' -a ${RELEASE} = 'jessie' ] ||\
-   [ ${DISTRIBUTION} = 'debian' -a ${RELEASE} = 'stretch' ]
+   [ ${DISTRIBUTION} = 'debian' -a ${RELEASE} = 'stretch' ] ||\
+   [ ${DISTRIBUTION} = 'debian' -a ${RELEASE} = 'buster' ]
 then
   # Improve systemd support:
   # - The fedora template does it but the fedora images from the download

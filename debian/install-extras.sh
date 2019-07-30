@@ -126,6 +126,10 @@ if [ $SALT = 1 ]; then
         SALT_SOURCE_1="deb http://repo.saltstack.com/apt/debian/7/amd64/latest wheezy main"
       elif [ $RELEASE == "jessie" ]; then
         SALT_SOURCE_1="deb http://repo.saltstack.com/apt/debian/8/amd64/latest jessie main"
+      elif [ $RELEASE == "stretch" ]; then
+        SALT_SOURCE_1="deb http://repo.saltstack.com/apt/debian/8/amd64/latest stretch main"
+      elif [ $RELEASE == "buster" ]; then
+        SALT_SOURCE_1="deb http://repo.saltstack.com/apt/debian/10/amd64/latest buster main"
       else
         SALT_SOURCE_1="deb http://debian.saltstack.com/debian unstable main"
       fi
