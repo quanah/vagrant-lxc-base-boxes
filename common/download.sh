@@ -64,18 +64,9 @@ then
   utils.lxc.stop
   echo  >> /var/lib/lxc/${CONTAINER}/config
   echo "# settings for systemd with PID 1:" >> /var/lib/lxc/${CONTAINER}/config
-  if [ ${DISTRIBUTION} = 'debian' -a ${RELEASE} = 'buster' ];  then
-	echo "Skipping kmsg" >> /var/lib/lxc/${CONTAINER}/config
-  else
-    echo "lxc.kmsg = 0" >> /var/lib/lxc/${CONTAINER}/config
-  fi
   echo "lxc.autodev = 1" >> /var/lib/lxc/${CONTAINER}/config
   utils.lxc.start
-  if [ ${DISTRIBUTION} = 'debian' -a ${RELEASE} = 'buster' ]; then
-	echo "Skipping kmsg again" >> /var/lib/lxc/${CONTAINER}/config
-  else
-    utils.lxc.attach rm -f /dev/kmsg
-  fi
+  utils.lxc.attach rm -f /dev/kmsg
   utils.lxc.stop
 fi
 
