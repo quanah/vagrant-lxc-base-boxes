@@ -21,6 +21,7 @@ This repository contains a set of scripts for creating base boxes for usage with
   - Wheezy x86_64
   - Jessie x86_64
   - Stretch x86_64
+  - Buster x86_64
   - Sid x86_64
 * Fedora
   - 19 x86_64
