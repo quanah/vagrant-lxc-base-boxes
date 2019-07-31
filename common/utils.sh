@@ -3,7 +3,7 @@
 utils.lxc.attach() {
   cmd="$@"
   log "Running [${cmd}] inside '${CONTAINER}' container..."
-  (lxc-attach -n ${CONTAINER} -- $cmd) &>> ${LOG}
+  (lxc-attach -v "DEBIAN_FRONTEND=noninteractive" -n ${CONTAINER} -- $cmd) &>> ${LOG}
 }
 
 utils.lxc.start() {
