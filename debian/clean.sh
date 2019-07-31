@@ -17,6 +17,3 @@ rm -f ${ROOTFS}/var/lib/dhcp/*
 
 log 'Removing downloaded packages...'
 utils.lxc.attach apt-get clean
-
-log 'Removing cached apt lists...'
-rm -rf ${ROOTFS}/var/lib/apt/lists/*
