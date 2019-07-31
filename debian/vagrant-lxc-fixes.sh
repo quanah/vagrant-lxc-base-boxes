@@ -43,7 +43,7 @@ if [ ${DISTRIBUTION} = 'debian' ]; then
 	  utils.lxc.attach /bin/systemctl mask udev.service systemd-udevd.service
   fi
   if [ "$RELEASE" = 'bionic' ] || [ "$RELEASE" = 'buster' ]; then
-      utils.lxc.attach /usr/bin/systemctl mask container-getty@.service
+      utils.lxc.attach /bin/systemctl mask container-getty@.service
   fi
 fi
 
