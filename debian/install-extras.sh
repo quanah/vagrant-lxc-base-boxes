@@ -37,7 +37,6 @@ utils.lxc.attach apt-get upgrade -y --force-yes
 
 ANSIBLE=${ANSIBLE:-0}
 CHEF=${CHEF:-0}
-PUPPET=${PUPPET:-0}
 SALT=${SALT:-0}
 BABUSHKA=${BABUSHKA:-0}
 
@@ -73,22 +72,6 @@ EOF
   fi
 else
   log "Skipping Chef installation"
-fi
-
-if [ $PUPPET = 1 ]; then
-  if $(lxc-attach -n ${CONTAINER} -- which puppet &>/dev/null); then
-    log "Puppet has been installed on container, skipping"
-  elif [ ${RELEASE} = 'sid' ]; then
-    warn "Puppet can't be installed on Debian sid, skipping"
-  else
-    log "Installing Puppet"
-    wget http://apt.puppetlabs.com/puppetlabs-release-${RELEASE}.deb -O "${ROOTFS}/tmp/puppetlabs-release-stable.deb" &>>${LOG}
-    utils.lxc.attach dpkg -i "/tmp/puppetlabs-release-stable.deb"
-    utils.lxc.attach apt-get update
-    utils.lxc.attach apt-get install puppet -y --force-yes
-  fi
-else
-  log "Skipping Puppet installation"
 fi
 
 if [ $SALT = 1 ]; then

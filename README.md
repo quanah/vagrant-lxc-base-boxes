@@ -51,7 +51,7 @@ By default no provisioning tools will be included but you can pick the ones
 you want by providing some environmental variables. For example:
 
 ```sh
-ANSIBLE=1 PUPPET=1 CHEF=1 SALT=1 BABUSHKA=1 \
+ANSIBLE=1 CHEF=1 SALT=1 BABUSHKA=1 \
 make precise
 ```
 

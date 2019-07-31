@@ -50,7 +50,7 @@ acceptance: CONTAINER = "vagrant-base-acceptance-$(ARCH)"
 acceptance: PACKAGE = "output/${TODAY}/vagrant-lxc-acceptance-$(ARCH).box"
 acceptance:
 	@mkdir -p $$(dirname $(PACKAGE))
-	@PUPPET=1 CHEF=1 sudo -E ./mk-debian.sh ubuntu precise $(ARCH) $(CONTAINER) $(PACKAGE)
+	@sudo -E ./mk-debian.sh ubuntu precise $(ARCH) $(CONTAINER) $(PACKAGE)
 	@sudo chmod +rw $(PACKAGE)
 	@sudo chown ${USER}: $(PACKAGE)
 
