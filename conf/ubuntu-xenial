@@ -3,7 +3,7 @@
 # For additional config options, please look at lxc.container.conf(5)
 
 # Common configuration
-lxc.include = /usr/share/lxc/config/ubuntu.common.conf
+lxc.include = /usr/share/lxc/config/common.conf
 
 # settings for systemd with PID 1:
 lxc.autodev = 1
