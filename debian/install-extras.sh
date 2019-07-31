@@ -35,7 +35,6 @@ utils.lxc.attach apt-get update
 utils.lxc.attach apt-get install ${PACKAGES[*]} -y --force-yes
 utils.lxc.attach apt-get upgrade -y --force-yes
 
-CHEF=${CHEF:-0}
 SALT=${SALT:-0}
 BABUSHKA=${BABUSHKA:-0}
 
@@ -43,22 +42,6 @@ if [ $DISTRIBUTION = 'debian' ]; then
   # Enable bash-completion
   sed -e '/^#if ! shopt -oq posix; then/,/^#fi/ s/^#\(.*\)/\1/g' \
     -i ${ROOTFS}/etc/bash.bashrc
-fi
-
-if [ $CHEF = 1 ]; then
-  if $(lxc-attach -n ${CONTAINER} -- which chef-solo &>/dev/null); then
-    log "Chef has been installed on container, skipping"
-  else
-    log "Installing Chef"
-    cat > ${ROOTFS}/tmp/install-chef.sh << EOF
-#!/bin/sh
-curl -L https://www.opscode.com/chef/install.sh -k | sudo bash
-EOF
-    chmod +x ${ROOTFS}/tmp/install-chef.sh
-    utils.lxc.attach /tmp/install-chef.sh
-  fi
-else
-  log "Skipping Chef installation"
 fi
 
 if [ $SALT = 1 ]; then

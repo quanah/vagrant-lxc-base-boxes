@@ -9,11 +9,9 @@ set -e
 # USAGE:
 #   $ cd boxes && sudo ./build-openmandriva-box.sh OPENMANDRIVA_RELEASE BOX_ARCH
 #
-# TODO: scripts for install CHEF, PUPPET, SALT, BABUSHKA
+# TODO: scripts for install SALT, BABUSHKA
 # To enable Chef or any other configuration management tool pass '1' to the
 # corresponding env var:
-#   $ CHEF=1 sudo -E ./build-openmandriva-box.sh OPENMANDRIVA_RELEASE BOX_ARCH
-#   $ PUPPET=1 sudo -E ./build-openmandriva-box.sh OPENMANDRIVA_RELEASE BOX_ARCH
 #   $ SALT=1 sudo -E ./build-openmandriva-box.sh OPENMANDRIVA_RELEASE BOX_ARCH
 #   $ BABUSHKA=1 sudo -E ./build-openmandriva-box.sh OPENMANDRIVA_RELEASE BOX_ARCH
 
@@ -30,8 +28,6 @@ VAGRANT_KEY="ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA6NF8iallvQVp22WDkTkyrtvp9eWW6A8
 ROOTFS=/var/lib/lxc/${RELEASE}-base/${RELEASE}-base/rootfs
 
 # Providing '1' will enable these tools
-CHEF=${CHEF:-0}
-PUPPET=${PUPPET:-0}
 SALT=${SALT:-0}
 BABUSHKA=${BABUSHKA:-0}
 
@@ -106,14 +102,6 @@ chroot ${ROOTFS} urpmi.update -a
 
 ##################################################################################
 # 6 - Configuration management tools
-
-if [ $CHEF = 1 ]; then
-  ./common/install-chef $ROOTFS
-fi
-
-if [ $PUPPET = 1 ]; then
-  ./common/install-puppet $ROOTFS
-fi
 
 if [ $SALT = 1 ]; then
   ./common/install-salt $ROOTFS
