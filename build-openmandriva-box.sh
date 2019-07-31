@@ -9,10 +9,9 @@ set -e
 # USAGE:
 #   $ cd boxes && sudo ./build-openmandriva-box.sh OPENMANDRIVA_RELEASE BOX_ARCH
 #
-# TODO: scripts for install SALT, BABUSHKA
+# TODO: scripts for install BABUSHKA
 # To enable Chef or any other configuration management tool pass '1' to the
 # corresponding env var:
-#   $ SALT=1 sudo -E ./build-openmandriva-box.sh OPENMANDRIVA_RELEASE BOX_ARCH
 #   $ BABUSHKA=1 sudo -E ./build-openmandriva-box.sh OPENMANDRIVA_RELEASE BOX_ARCH
 
 ##################################################################################
@@ -28,7 +27,6 @@ VAGRANT_KEY="ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA6NF8iallvQVp22WDkTkyrtvp9eWW6A8
 ROOTFS=/var/lib/lxc/${RELEASE}-base/${RELEASE}-base/rootfs
 
 # Providing '1' will enable these tools
-SALT=${SALT:-0}
 BABUSHKA=${BABUSHKA:-0}
 
 # Path to files bundled with the box
@@ -102,10 +100,6 @@ chroot ${ROOTFS} urpmi.update -a
 
 ##################################################################################
 # 6 - Configuration management tools
-
-if [ $SALT = 1 ]; then
-  ./common/install-salt $ROOTFS
-fi
 
 if [ $BABUSHKA = 1 ]; then
   ./common/install-babushka $ROOTFS
