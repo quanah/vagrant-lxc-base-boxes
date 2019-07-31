@@ -14,7 +14,7 @@ SECS=15
 log "Sleeping for $SECS seconds..."
 sleep $SECS
 
-PACKAGES=(vim curl wget man-db openssh-server bash-completion ca-certificates sudo)
+PACKAGES=(apt-utils vim curl wget man-db openssh-server bash-completion ca-certificates sudo)
 
 log "Installing additional packages: ${ADDPACKAGES}"
 PACKAGES+=" ${ADDPACKAGES}"
