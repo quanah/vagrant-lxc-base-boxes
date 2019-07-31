@@ -17,8 +17,8 @@ sleep $SECS
 # TODO: Support for appending to this list from outside
 PACKAGES=(vim-enhanced curl wget man-db bash-completion ca-certificates sudo openssh-server strace python-dnf dnf-plugins-core e2fsprogs net-tools bind-utils)
 
-utils.lxc.attach yum update -y
-utils.lxc.attach yum install ${PACKAGES[*]} -y
+utils.lxc.attach dnf update -y
+utils.lxc.attach dnf install ${PACKAGES[*]} -y
 
 
 MASK_TMP=${MASK_TMP:-0}
