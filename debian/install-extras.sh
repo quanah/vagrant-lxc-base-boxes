@@ -35,7 +35,6 @@ utils.lxc.attach apt-get update
 utils.lxc.attach apt-get install ${PACKAGES[*]} -y --force-yes
 utils.lxc.attach apt-get upgrade -y --force-yes
 
-ANSIBLE=${ANSIBLE:-0}
 CHEF=${CHEF:-0}
 SALT=${SALT:-0}
 BABUSHKA=${BABUSHKA:-0}
@@ -44,18 +43,6 @@ if [ $DISTRIBUTION = 'debian' ]; then
   # Enable bash-completion
   sed -e '/^#if ! shopt -oq posix; then/,/^#fi/ s/^#\(.*\)/\1/g' \
     -i ${ROOTFS}/etc/bash.bashrc
-fi
-
-if [ $ANSIBLE = 1 ]; then
-  if $(lxc-attach -n ${CONTAINER} -- which ansible &>/dev/null); then
-    log "Ansible has been installed on container, skipping"
-  else
-    info "Installing Ansible"
-    cp debian/install-ansible.sh ${ROOTFS}/tmp/ && chmod +x ${ROOTFS}/tmp/install-ansible.sh
-    utils.lxc.attach /tmp/install-ansible.sh &>>${LOG}
-  fi
-else
-  log "Skipping Ansible installation"
 fi
 
 if [ $CHEF = 1 ]; then
