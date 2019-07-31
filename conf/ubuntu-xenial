@@ -9,4 +9,4 @@ lxc.include = /usr/share/lxc/config/ubuntu.common.conf
 lxc.autodev = 1
 # allow unconfined and incomplete
 lxc.apparmor.profile = unconfined
-lxc.appaarmor_allow_incomplete = 1
+lxc.apparmor.allow_incomplete = 1

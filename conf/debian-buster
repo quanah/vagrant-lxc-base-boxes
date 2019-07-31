@@ -1,16 +1,13 @@
 # support systemd as PID 1
 lxc.autodev = 1
 
-# Default pivot location
-lxc.pivotdir = lxc_putold
-
 # Default mount entries
 lxc.mount.auto = cgroup:mixed proc:mixed sys:mixed
 lxc.mount.entry = /sys/fs/fuse/connections sys/fs/fuse/connections none bind,optional 0 0
 
 # Default console settings
-lxc.tty = 4
-lxc.pts = 1024
+lxc.tty.max = 4
+lxc.pty.max = 1024
 
 # Default capabilities
 lxc.cap.drop = sys_module mac_admin mac_override sys_time sys_rawio

@@ -8,5 +8,5 @@
 # settings for systemd with PID 1:
 lxc.autodev = 1
 # allow unconfined and incomplete
-# lxc.apparmor.profile = unconfined
+lxc.apparmor.profile = unconfined
 lxc.apparmor.allow_incomplete  = 1
