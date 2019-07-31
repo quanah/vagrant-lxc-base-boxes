@@ -1,8 +1,6 @@
 # support systemd as PID 1
 lxc.autodev = 1
 
-# Default pivot location
-
 # Default mount entries
 lxc.mount.auto = cgroup:mixed proc:mixed sys:mixed
 lxc.mount.entry = /sys/fs/fuse/connections sys/fs/fuse/connections none bind,optional 0 0
