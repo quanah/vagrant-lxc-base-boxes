@@ -42,6 +42,9 @@ if [ ${DISTRIBUTION} = 'debian' ]; then
 	  # Mask udev.service and systemd-udevd.service:
 	  utils.lxc.attach /bin/systemctl mask udev.service systemd-udevd.service
   fi
+  if [ "$RELEASE" = 'bionic' ]; then
+      utils.lxc.attach /usr/bin/systemctl mask container-getty@.service
+  fi
 fi
 
 utils.lxc.attach /usr/sbin/locale-gen ${LANG}
