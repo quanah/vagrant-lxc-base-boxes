@@ -51,16 +51,6 @@ By default no provisioning tools will be included but you can pick the ones
 you want by providing some environmental variables. For example:
 
 ```sh
-BABUSHKA=1 \
-make precise
-```
-
-Will build a Ubuntu Precise x86_64 box with latest Ansible, Puppet, Chef, Salt and
-Babushka pre-installed.
-
-Additional packages to be installed can be specified with the ADDPACKAGES variable:
-
-```sh
 ADDPACKAGES="aptitude htop" \
 make trusty
 ```

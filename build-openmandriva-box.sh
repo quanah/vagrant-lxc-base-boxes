@@ -9,11 +9,6 @@ set -e
 # USAGE:
 #   $ cd boxes && sudo ./build-openmandriva-box.sh OPENMANDRIVA_RELEASE BOX_ARCH
 #
-# TODO: scripts for install BABUSHKA
-# To enable Chef or any other configuration management tool pass '1' to the
-# corresponding env var:
-#   $ BABUSHKA=1 sudo -E ./build-openmandriva-box.sh OPENMANDRIVA_RELEASE BOX_ARCH
-
 ##################################################################################
 # 0 - Initial setup and sanity checks
 
@@ -25,9 +20,6 @@ PKG=vagrant-lxc-${RELEASE}-${ARCH}-${TODAY}.box
 WORKING_DIR=/tmp/vagrant-lxc-${RELEASE}
 VAGRANT_KEY="ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA6NF8iallvQVp22WDkTkyrtvp9eWW6A8YVr+kz4TjGYe7gHzIw+niNltGEFHzD8+v1I2YJ6oXevct1YeS0o9HZyN1Q9qgCgzUFtdOKLv6IedplqoPkcmF0aYet2PkEDo3MlTBckFXPITAMzF8dJSIFo9D8HfdOV0IAdx4O7PtixWKn5y2hMNG0zQPyUecp4pzC6kivAIhyfHilFR61RGL+GPXQ2MWZWFYbAGjyiYJnAmCP3NOTd0jMZEnDkbUvxhMmBYSdETk1rRgm+R4LOzFUGaHqHDLKLX+FIPKcF96hrucXzcWyLbIbEgE98OHlnVYCzRdK8jlqm8tehUc9c9WhQ== vagrant insecure public key"
 ROOTFS=/var/lib/lxc/${RELEASE}-base/${RELEASE}-base/rootfs
-
-# Providing '1' will enable these tools
-BABUSHKA=${BABUSHKA:-0}
 
 # Path to files bundled with the box
 CWD=`readlink -f .`
@@ -96,14 +88,6 @@ sed -i 's/\# %wheel/\%wheel/' ${ROOTFS}/etc/sudoers
 PACKAGES=(vim curl wget man bash-completion openssh-server openssh-clients tar)
 chroot ${ROOTFS} urpmi ${PACKAGES[*]} --auto
 chroot ${ROOTFS} urpmi.update -a
-
-
-##################################################################################
-# 6 - Configuration management tools
-
-if [ $BABUSHKA = 1 ]; then
-  ./common/install-babushka $ROOTFS
-fi
 
 
 ##################################################################################
