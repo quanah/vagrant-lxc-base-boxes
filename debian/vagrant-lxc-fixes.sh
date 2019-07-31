@@ -30,7 +30,7 @@ if [ ${DISTRIBUTION} = 'debian' ]; then
 
   # Fixes for jessie, following the guide from
   # https://wiki.debian.org/LXC#Incompatibility_with_systemd
-  if [ "$RELEASE" = 'jessie' ] || [ "$RELEASE" = 'stretch' ] || [ "$RELEASE" = 'buster' ]; then
+  if [ "$RELEASE" = 'jessie' ] || [ "$RELEASE" = 'stretch' ]; then
 	  # Reconfigure the LXC
 	  utils.lxc.attach /bin/cp \
 		  /lib/systemd/system/getty@.service \
@@ -42,7 +42,7 @@ if [ ${DISTRIBUTION} = 'debian' ]; then
 	  # Mask udev.service and systemd-udevd.service:
 	  utils.lxc.attach /bin/systemctl mask udev.service systemd-udevd.service
   fi
-  if [ "$RELEASE" = 'bionic' ]; then
+  if [ "$RELEASE" = 'bionic' ] || [ "$RELEASE" = 'buster' ]; then
       utils.lxc.attach /usr/bin/systemctl mask container-getty@.service
   fi
 fi
