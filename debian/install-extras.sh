@@ -31,6 +31,10 @@ fi
 if [ $RELEASE != 'stretch' ] && [ $RELEASE != 'bionic' ] && [ $RELEASE != 'buster' ] ; then
   PACKAGES+=' python-software-properties'
 fi
+if [ $RELEASE = 'jessie' ]; then
+  PACKAGES+=' dbus'
+fi
+
 utils.lxc.attach apt-get update
 utils.lxc.attach apt-get install ${PACKAGES[*]} -y --force-yes
 utils.lxc.attach apt-get upgrade -y --force-yes
