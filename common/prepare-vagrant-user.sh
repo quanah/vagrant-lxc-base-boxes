@@ -28,6 +28,10 @@ elif [ ${DISTRIBUTION} = 'centos' -o ${DISTRIBUTION} = 'fedora' ]; then
     # pretend that password was changed today (won't fail during provisioning)
     chroot ${ROOTFS} chage -I -1 -m 0 -M 99999 -E -1 -d `date +%Y-%m-%d` root
   fi
+elif [ ${DISTRIBUTION} = 'opensuse' ]; then
+  debug 'Creating vagrant user...'
+  chroot ${ROOTFS} useradd --create-home -s /bin/bash -u 1000 vagrant &>> ${LOG}
+  echo -n 'vagrant:vagrant' | chroot ${ROOTFS} chpasswd
 else
   debug 'Creating vagrant user...'
   chroot ${ROOTFS} useradd --create-home -s /bin/bash vagrant &>> ${LOG}
