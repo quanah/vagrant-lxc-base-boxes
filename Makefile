@@ -1,4 +1,4 @@
-UBUNTU_BOXES= precise quantal raring saucy trusty utopic vivid wily xenial bionic
+UBUNTU_BOXES= precise quantal raring saucy trusty utopic vivid wily xenial bionic focal
 DEBIAN_BOXES= squeeze wheezy jessie stretch buster sid
 CENTOS_BOXES= 6 7 8
 FEDORA_BOXES= rawhide 23 22 21 20 19

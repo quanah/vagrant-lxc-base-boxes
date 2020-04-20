@@ -28,7 +28,7 @@ fi
 if [ $RELEASE != 'raring' ] && [ $RELEASE != 'saucy' ] && [ $RELEASE != 'trusty' ] && [ $RELEASE != 'wily' ] ; then
   PACKAGES+=' nfs-common'
 fi
-if [ $RELEASE != 'stretch' ] && [ $RELEASE != 'bionic' ] && [ $RELEASE != 'buster' ] ; then
+if [ $RELEASE != 'stretch' ] && [ $RELEASE != 'bionic' ] && [ $RELEASE != 'buster' ] && [ $RELEASE != 'focal'] ; then
   PACKAGES+=' python-software-properties'
 fi
 if [ $RELEASE = 'jessie' ]; then
